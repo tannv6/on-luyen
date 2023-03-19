@@ -24,9 +24,19 @@ const apiDeleteKnowLedge = (id: string) => {
   return Api.delete(`/delete/${id}`, {});
 };
 
+const apiSaveMessage = (params: { user: string; content: string }) => {
+  return Api.post("/messages/create", params);
+};
+
+const apiGetListMessage = () => {
+  return Api.get("/messages", {});
+};
+
 export {
   apiGetKnowledges,
   apiCreateKnowledges,
   apiDeleteKnowLedge,
   apiUpdateKnowledge,
+  apiSaveMessage,
+  apiGetListMessage,
 };

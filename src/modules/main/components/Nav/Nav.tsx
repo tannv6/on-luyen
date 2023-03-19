@@ -139,7 +139,15 @@ function Nav() {
           <button>Update & FAQ</button>
         </div>
         <div className="tool">
-          <button>Log out</button>
+          <button
+            onClick={() =>
+              dispatch({
+                type: "LOGOUT",
+              })
+            }
+          >
+            Log out
+          </button>
         </div>
       </div>
     </div>

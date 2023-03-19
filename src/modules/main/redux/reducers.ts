@@ -37,6 +37,15 @@ const reducer = (state = initState, action: any): TMainStates => {
           stage: STAGE_OF_STORE.SUCCESS,
         },
       };
+    case "SET_LIST_CHAT": {
+      return {
+        ...state,
+        messages: {
+          ...state.messages,
+          data: [...state.messages.data].concat(action.response),
+        },
+      };
+    }
     case "NEW_CHAT": {
       return {
         ...state,

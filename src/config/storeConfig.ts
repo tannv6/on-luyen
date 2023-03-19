@@ -6,6 +6,7 @@ import {
 import ReducersConfig from "./reducersConfig";
 import "../modules/main/redux/reducers";
 import "../modules/main/redux/middleware";
+import "../modules/auth/redux/reducer";
 import { persistStore } from "redux-persist";
 import MidlewareConfig from "./middlewaresConfig";
 
