@@ -33,40 +33,8 @@ function Contents() {
     });
   };
 
-  const [initMove, setInitMove] = useState<number | null>(null);
-  const [moved, setMoved] = useState<number | null>(null);
-
   return (
-    <div
-      className="content"
-      onTouchStart={(e) => {
-        const touch = e.touches[0];
-        setInitMove(touch.clientX);
-      }}
-      onTouchMove={(e) => {
-        const touch = e.touches[0];
-        setMoved(touch.clientX);
-      }}
-      onTouchEnd={() => {
-        if (moved !== null && initMove !== null && moved - initMove > 100) {
-          dispatch({
-            type: "SET_OPEN_NAV",
-            response: true,
-          });
-        } else if (
-          moved !== null &&
-          initMove !== null &&
-          moved - initMove < -100
-        ) {
-          dispatch({
-            type: "SET_OPEN_NAV",
-            response: false,
-          });
-        }
-        setInitMove(null);
-        setMoved(null);
-      }}
-    >
+    <div className="content">
       <h2>Tổng hợp kiến thức cần nhớ</h2>
       <div>
         {data.map((item) => (
