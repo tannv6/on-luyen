@@ -11,10 +11,10 @@ function MainPage() {
     });
   }, []);
   return (
-    <>
+    <div className="main-pages">
       <Nav />
       <Contents />
-    </>
+    </div>
   );
 }
 

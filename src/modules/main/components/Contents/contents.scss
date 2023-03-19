@@ -36,14 +36,12 @@
     display: flex;
     flex-direction: column;
     z-index: 10;
-    padding: 0 0 32px 0;
     &-hidden {
       visibility: hidden;
     }
     .chat-box {
       width: 360px;
       flex: 1;
-      // min-height: 500px;
       max-height: 100%;
       background-color: #fff;
       margin: auto;
@@ -55,6 +53,18 @@
       flex-direction: column;
       @media (max-width: 475px) {
         width: 100%;
+      }
+      .chat-header {
+        position: relative;
+        .icon-close {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-60%);
+          right: 10px;
+          font-size: 40px;
+          display: inline-block;
+          line-height: 1.2;
+        }
       }
       .chat-list {
         flex: 1;

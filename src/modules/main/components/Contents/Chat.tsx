@@ -9,11 +9,11 @@ function Chat() {
   const dispatch = useDispatch();
   const user = useRef(null);
   const bottomList = useRef<any>(null);
-  const [openChat, setOpenChat] = useState(false);
   const [mes, setMes] = useState("");
   const { data: messages } = useSelector(
     (state: TMainStore) => state.main.messages
   );
+  const isOpenChat = useSelector((state: TMainStore) => state.main.isOpenChat);
   useEffect(() => {
     socket.on("connect", () => {
       console.log("connected");
@@ -67,16 +67,32 @@ function Chat() {
   return (
     <>
       <div
-        className={`chat-popup ${openChat ? "" : "chat-popup-hidden"}`}
+        className={`chat-popup ${isOpenChat ? "" : "chat-popup-hidden"}`}
         id="chat-popup"
         onClick={(e: any) => {
           if (e.target.id === "chat-popup") {
-            setOpenChat(false);
+            dispatch({
+              type: "SET_OPEN_CHAT",
+              response: false,
+            });
           }
         }}
       >
         <div className="chat-box">
-          <h3>Chat</h3>
+          <div className="chat-header">
+            <h3>Chat</h3>
+            <span
+              onClick={() =>
+                dispatch({
+                  type: "SET_OPEN_CHAT",
+                  response: false,
+                })
+              }
+              className="icon-close"
+            >
+              &times;
+            </span>
+          </div>
           <div className="chat-list">
             {messages.map((e, i) => {
               return (
@@ -109,7 +125,16 @@ function Chat() {
         </div>
       </div>
       <div className="open-chat">
-        <button onClick={() => setOpenChat(true)}>Chat</button>
+        <button
+          onClick={() =>
+            dispatch({
+              type: "SET_OPEN_CHAT",
+              response: true,
+            })
+          }
+        >
+          Chat
+        </button>
       </div>
     </>
   );

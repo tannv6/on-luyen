@@ -14,6 +14,7 @@ const initState: TMainStates = {
     stage: STAGE_OF_STORE.INIT,
   },
   isOpenNav: true,
+  isOpenChat: false,
 };
 
 const reducer = (state = initState, action: any): TMainStates => {
@@ -51,6 +52,12 @@ const reducer = (state = initState, action: any): TMainStates => {
         isOpenNav: action.response,
       };
     }
+    case "SET_OPEN_CHAT": {
+      return {
+        ...state,
+        isOpenChat: action.response,
+      };
+    }
     default:
       return state;
   }
@@ -59,7 +66,7 @@ const reducer = (state = initState, action: any): TMainStates => {
 const aConfig = {
   key: "main",
   storage,
-  whitelist: [],
+  whitelist: ["isOpenNav", "isOpenChat"],
 };
 
 Reducers.register("main", persistReducer(aConfig, reducer));

@@ -8,6 +8,7 @@ export type TMainStates = {
     stage: string;
   };
   isOpenNav: boolean;
+  isOpenChat: boolean;
 };
 export type TKnowLedge = {
   _id: string;
