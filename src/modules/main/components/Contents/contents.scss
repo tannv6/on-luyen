@@ -1,0 +1,118 @@
+.content {
+  flex: 1;
+  height: 100%;
+  overflow: auto;
+  background-color: #fff;
+  padding: 8px 24px;
+  h2,
+  h3 {
+    text-align: center;
+    margin-block: 8px;
+  }
+  .knowledge-item {
+    display: flex;
+    flex-direction: column;
+    textarea {
+      border: none;
+      outline: none;
+      border-radius: 8px;
+      padding: 8px;
+      resize: vertical;
+      &:focus {
+        outline: 1px solid red;
+      }
+      &:hover {
+        outline: 1px solid blue;
+      }
+    }
+  }
+  .chat-popup {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #00000066;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    padding: 0 0 32px 0;
+    &-hidden {
+      visibility: hidden;
+    }
+    .chat-box {
+      width: 360px;
+      flex: 1;
+      // min-height: 500px;
+      max-height: 100%;
+      background-color: #fff;
+      margin: auto;
+      border-radius: 8px;
+      position: relative;
+      padding: 6px;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      @media (max-width: 475px) {
+        width: 100%;
+      }
+      .chat-list {
+        flex: 1;
+        overflow: auto;
+        margin-bottom: 44px;
+        border-top: 1px solid rgb(206, 203, 203);
+        border-bottom: 1px solid rgb(206, 203, 203);
+        .chat-item {
+          display: flex;
+          margin-top: 4px;
+          &-left {
+            justify-content: flex-start;
+            .item-message {
+              background-color: #d0d4d0;
+              color: #333;
+            }
+          }
+          &-right {
+            justify-content: flex-end;
+            .item-message {
+              background-color: green;
+              color: #fff;
+            }
+          }
+          .item-message {
+            padding: 4px 8px;
+            border-radius: 12px;
+          }
+        }
+      }
+      .chat-input {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        padding: 6px;
+        input {
+          flex: 1;
+          border: 1px solid #1877f2;
+          outline: none;
+          border-radius: 8px;
+          font-size: 16px;
+          width: auto;
+          min-width: none;
+          padding: 8px;
+          height: 40px;
+        }
+        // button {
+        //   position: absolute;
+        // }
+      }
+    }
+  }
+  .open-chat {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 9;
+  }
+}
