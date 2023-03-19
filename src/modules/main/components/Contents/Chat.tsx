@@ -8,7 +8,6 @@ const socket = io("https://on-luyen-api.onrender.com");
 
 function Chat() {
   const dispatch = useDispatch();
-  const user = useRef(null);
   const bottomList = useRef<any>(null);
   const [mes, setMes] = useState("");
   const { data: messages } = useSelector(
@@ -70,7 +69,7 @@ function Chat() {
 
   useEffect(() => {
     const lastMes = messages[messages.length - 1];
-    if (lastMes?.user !== userInfo?.user_name) {
+    if (lastMes) {
       bottomList.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages?.length]);
@@ -116,7 +115,9 @@ function Chat() {
                   }`}
                 >
                   <div className={`item-message`}>
-                    <span className="message-user">{e.user}</span>
+                    {e.user !== userInfo?.user_name && (
+                      <span className="message-user">{e.user}</span>
+                    )}
                     <div className="message-content">{e.content}</div>
                   </div>
                 </div>

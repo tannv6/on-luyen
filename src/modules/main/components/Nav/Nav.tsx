@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { TMainStore } from "../../utils/types";
 import { useNavigate } from "react-router";
 import "./nav.scss";
+import IconDelete from "./delete-button-svgrepo-com.svg";
 function Nav() {
   const dispatch = useDispatch();
 
@@ -122,10 +123,7 @@ function Nav() {
           <div key={e._id} className="knowlege-element">
             <strong className="knowledge-name">{e.knowledge_name}</strong>
             <button onClick={handleDeleteKnowledge(e._id)}>
-              <img
-                src="http://192.168.0.102:5173/delete-button-svgrepo-com.svg"
-                alt=""
-              />
+              <img src={IconDelete} alt="" />
             </button>
           </div>
         ))}
