@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import io from "socket.io-client";
 import { apiGetListMessage, apiSaveMessage } from "../../redux/services";
 import { TMainStore } from "../../utils/types";
-const socket = io("http://192.168.0.102:3001");
+const socket = io("https://on-luyen-api.onrender.com");
 
 function Chat() {
   const dispatch = useDispatch();
