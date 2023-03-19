@@ -19,7 +19,6 @@ function Chat() {
 
   useEffect(() => {
     apiGetListMessage().then((res) => {
-      console.log("kkkk", res);
       if (res.data) {
         dispatch({
           type: "SET_LIST_CHAT",
@@ -57,10 +56,10 @@ function Chat() {
 
   const sendMessage = async () => {
     await apiSaveMessage({
-      user: userInfo.user_name || "",
+      user: userInfo?.user_name || "",
       content: mes,
     });
-    socket.emit("send", { content: mes, user: userInfo.user_name || "" });
+    socket.emit("send", { content: mes, user: userInfo?.user_name || "" });
     setMes("");
   };
 
@@ -71,7 +70,7 @@ function Chat() {
 
   useEffect(() => {
     const lastMes = messages[messages.length - 1];
-    if (lastMes?.user !== userInfo.userInfo) {
+    if (lastMes?.user !== userInfo?.user_name) {
       bottomList.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages?.length]);
@@ -111,7 +110,7 @@ function Chat() {
                 <div
                   key={i}
                   className={`chat-item  ${
-                    e.user === userInfo.user_name
+                    e.user === userInfo?.user_name
                       ? "chat-item-right"
                       : "chat-item-left"
                   }`}

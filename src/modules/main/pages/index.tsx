@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Contents from "../components/Contents";
 import Nav from "../components/Nav";
+import { useNavigate } from "react-router";
 
 function MainPage() {
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
+  const userInfo = useSelector((state: any) => state.auth?.userInfo);
 
   const [initMove, setInitMove] = useState<number | null>(null);
   const [moved, setMoved] = useState<number | null>(null);
@@ -14,6 +19,13 @@ function MainPage() {
       type: "GET_KNOWLEDGE",
     });
   }, []);
+
+  useEffect(() => {
+    if (!userInfo) {
+      navigate("/login", { replace: true });
+    }
+  }, [userInfo]);
+
   return (
     <div
       className="main-pages"

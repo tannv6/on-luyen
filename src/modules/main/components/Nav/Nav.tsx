@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Api } from "../../../../config/apisConfig";
 import { TMainStore } from "../../utils/types";
+import { useNavigate } from "react-router";
 import "./nav.scss";
 function Nav() {
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   const [showPopup, setShowPoup] = useState(false);
 
@@ -140,11 +142,12 @@ function Nav() {
         </div>
         <div className="tool">
           <button
-            onClick={() =>
+            onClick={() => {
               dispatch({
                 type: "LOGOUT",
-              })
-            }
+              });
+              navigate("/login", { replace: true });
+            }}
           >
             Log out
           </button>
